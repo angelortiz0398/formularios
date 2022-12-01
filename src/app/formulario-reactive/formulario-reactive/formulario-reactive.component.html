@@ -1,0 +1,104 @@
+<form
+  [formGroup]="MiFormularioR"
+  (ngSubmit)="agregarProyecto()"
+  class="form-group container"
+  autocomplete="off"
+>
+  <div
+    class="alert alert-danger d-flex align-items-center"
+    *ngIf="MiFormularioR.invalid && MiFormularioR.touched"
+    role="alert"
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="16"
+      height="16"
+      fill="currentColor"
+      class="bi bi-x-square-fill"
+      viewBox="0 0 16 16"
+    >
+      <path
+        d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm3.354 4.646L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 1 1 .708-.708z"
+      />
+    </svg>
+    <div class="ml-2">Error: Formulario invalido</div>
+  </div>
+  <div class="mt-2">
+    <label for="proyectoR">Proyecto</label>
+    <input
+      class="form-control"
+      type="text"
+      id="proyectoR"
+      placeholder="Nombre del proyecto"
+      formControlName="proyectoR"
+    />
+  </div>
+
+  <div class="mt-2">
+    <label for="horasR">Horas</label>
+    <input
+      class="form-control"
+      type="number"
+      id="horasR"
+      placeholder="Selecciona las horas"
+      formControlName="horasR"
+    />
+  </div>
+
+  <div class="mt-2">
+    <label for="tecnologiasR">Tecnologias</label>
+    <div class="row">
+      <div class="col-8">
+        <input
+          autocomplete="off"
+          class="form-control"
+          type="text"
+          id="tecnologiasR"
+          placeholder="Nombre de la tecnologia"
+          [formControl]="tecnologiaR"
+        />
+      </div>
+      <div class="col-4">
+        <button
+          (click)="agregarTecnologiaR()"
+          type="button"
+          class="btn btn-success"
+        >
+          Agregar
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-12 my-2">
+    <ul class="list-group list-group-horizontal">
+      <li *ngFor="let tecnologia of tecnologiasR.value" class="list-group-item">
+        {{ tecnologia }}
+      </li>
+    </ul>
+  </div>
+  <div class="mt-2">
+    <button class="btn btn-warning mt-2 w-100" type="submit">
+      Agregar proyecto
+    </button>
+  </div>
+</form>
+
+<div class="container">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Proyecto</th>
+        <th scope="col">Horas</th>
+        <th scope="col">Tecnologias</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let proyecto of proyectosR">
+        <th scope="row">{{ proyecto.proyectoR }}</th>
+        <td>{{ proyecto.horasR }}</td>
+        <td>{{ proyecto.tecnologiasR }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

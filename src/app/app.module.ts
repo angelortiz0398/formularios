@@ -1,3 +1,5 @@
+import { FormularioReactiveModule } from './formulario-reactive/formulario-reactive.module';
+import { FormularioTemplateModule } from './formulario-template/formulario-template.module';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -10,7 +12,9 @@ import { AppComponent } from './app.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormularioTemplateModule,
+    FormularioReactiveModule
   ],
   providers: [],
   bootstrap: [AppComponent]
